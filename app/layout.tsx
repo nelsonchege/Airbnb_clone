@@ -5,6 +5,7 @@ import Navbar from "./components/navbar/Navbar";
 import "./globals.css";
 import { Inter, Nunito } from "next/font/google";
 import { ToasterProvider } from "./provider/ToasterProvider";
+import NextAuthSessionProvider from "./providers/sessionProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,12 +25,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        <ClientOnly>
-          <ToasterProvider />
-          <RegisterModal />
-          <Navbar />
-        </ClientOnly>
-        {children}
+        <NextAuthSessionProvider>
+          <ClientOnly>
+            <ToasterProvider />
+            <RegisterModal />
+            <Navbar />
+          </ClientOnly>
+          {children}
+        </NextAuthSessionProvider>
       </body>
     </html>
   );
