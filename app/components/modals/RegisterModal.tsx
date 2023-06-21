@@ -47,11 +47,7 @@ function RegisterModal() {
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <Heading
-        center={false}
-        title="Register"
-        subtitle="register into the app"
-      />
+      <Heading center={false} subtitle="register into the app" />
       <Inputs
         id="email"
         label="email"
