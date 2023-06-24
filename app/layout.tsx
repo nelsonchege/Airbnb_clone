@@ -4,7 +4,7 @@ import RegisterModal from "./components/modals/RegisterModal";
 import Navbar from "./components/navbar/Navbar";
 import "./globals.css";
 import { Inter, Nunito } from "next/font/google";
-import { ToasterProvider } from "./provider/ToasterProvider";
+import { ToasterProvider } from "./providers/ToasterProvider";
 import NextAuthSessionProvider from "./providers/sessionProvider";
 
 const inter = Inter({ subsets: ["latin"] });
