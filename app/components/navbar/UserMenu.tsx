@@ -4,10 +4,12 @@ import Avatar from "./Avatar";
 import { useCallback, useState } from "react";
 import MenuItems from "./MenuItems";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
+import useLoginModal from "@/app/hooks/useLoginModal";
 
 export default function UserMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const RegisterModal = useRegisterModal();
+  const LoginMadal = useLoginModal();
   const toggleOpen = useCallback(() => {
     setIsOpen((value) => !value);
   }, []);
@@ -34,7 +36,7 @@ export default function UserMenu() {
         <div className="absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm">
           <div className="flex flex-col cursor-pointer">
             <>
-              <MenuItems onClick={() => {}} label="login" />
+              <MenuItems onClick={LoginMadal.onOpen} label="login" />
               <MenuItems onClick={RegisterModal.onOpen} label="signin" />
               <MenuItems onClick={() => {}} label="logout" />
             </>
