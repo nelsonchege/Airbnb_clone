@@ -10,7 +10,7 @@ import { useSession, signOut } from "next-auth/react";
 export default function UserMenu() {
   const { data: session } = useSession();
 
-  console.log("session--------------->", session);
+  console.log("user session -------------->", session);
   const [isOpen, setIsOpen] = useState(false);
   const RegisterModal = useRegisterModal();
   const LoginMadal = useLoginModal();
@@ -47,6 +47,12 @@ export default function UserMenu() {
                 </>
               ) : (
                 <>
+                  <MenuItems onClick={() => {}} label="My trips" />
+                  <MenuItems onClick={() => {}} label="My Favorites" />
+                  <MenuItems onClick={() => {}} label="My Reservations" />
+                  <MenuItems onClick={() => {}} label="My Properties" />
+                  <MenuItems onClick={() => {}} label="Airbnb my Home" />
+                  <hr />
                   <MenuItems onClick={() => signOut()} label="logout" />
                 </>
               )}
