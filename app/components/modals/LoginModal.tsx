@@ -84,13 +84,13 @@ function LoginModal() {
         outline
         label="continue with google"
         icon={FcGoogle}
-        onClick={() => {}}
+        onClick={() => signIn("google")}
       />
       <Button
         outline
         label="continue with gitlab"
         icon={AiFillGithub}
-        onClick={() => {}}
+        onClick={() => signIn("github")}
       />
     </div>
   );

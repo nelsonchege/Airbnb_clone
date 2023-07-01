@@ -32,7 +32,7 @@ export default function UserMenu() {
         >
           <AiOutlineMenu />
           <div className="hidden md:block">
-            <Avatar />
+            <Avatar src={session?.user?.image} />
           </div>
         </div>
       </div>
