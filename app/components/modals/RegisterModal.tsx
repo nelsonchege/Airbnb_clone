@@ -12,8 +12,11 @@ import Heading from "../Heading";
 import Inputs from "../Inputs";
 import { toast } from "react-hot-toast";
 import Button from "../Button";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 function RegisterModal() {
+  const router = useRouter();
   const RegisterModal = useRegisterModal();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -31,11 +34,24 @@ function RegisterModal() {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
-    console.log("-------->", data);
     axios
       .post("/api/register", data)
       .then(() => {
-        RegisterModal.onClose();
+        signIn("credentials", {
+          ...data,
+          redirect: false,
+        }).then((callback) => {
+          setIsLoading(false);
+
+          if (callback?.ok) {
+            toast.success("Registered Successfull");
+            router.refresh();
+            RegisterModal.onClose();
+          }
+          if (callback?.error) {
+            toast.error(callback.error);
+          }
+        });
       })
       .catch((error) => {
         toast.error("something went wrong");
@@ -47,7 +63,6 @@ function RegisterModal() {
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <Heading center={false} subtitle="register into the app" />
       <Inputs
         id="email"
         label="email"

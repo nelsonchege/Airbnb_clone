@@ -5,8 +5,12 @@ import { useCallback, useState } from "react";
 import MenuItems from "./MenuItems";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
+import { useSession, signOut } from "next-auth/react";
 
 export default function UserMenu() {
+  const { data: session } = useSession();
+
+  console.log("session--------------->", session);
   const [isOpen, setIsOpen] = useState(false);
   const RegisterModal = useRegisterModal();
   const LoginMadal = useLoginModal();
@@ -36,9 +40,16 @@ export default function UserMenu() {
         <div className="absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm">
           <div className="flex flex-col cursor-pointer">
             <>
-              <MenuItems onClick={LoginMadal.onOpen} label="login" />
-              <MenuItems onClick={RegisterModal.onOpen} label="signin" />
-              <MenuItems onClick={() => {}} label="logout" />
+              {!session ? (
+                <>
+                  <MenuItems onClick={LoginMadal.onOpen} label="login" />
+                  <MenuItems onClick={RegisterModal.onOpen} label="signin" />
+                </>
+              ) : (
+                <>
+                  <MenuItems onClick={() => signOut()} label="logout" />
+                </>
+              )}
             </>
           </div>
         </div>
