@@ -7,6 +7,7 @@ import { Inter, Nunito } from "next/font/google";
 import { ToasterProvider } from "./providers/ToasterProvider";
 import NextAuthSessionProvider from "./providers/sessionProvider";
 import LoginModal from "./components/modals/LoginModal";
+import RentModal from "./components/modals/RentModal";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
         <NextAuthSessionProvider>
           <ClientOnly>
             <ToasterProvider />
+            <RentModal />
             <RegisterModal />
             <LoginModal />
             <Navbar />
