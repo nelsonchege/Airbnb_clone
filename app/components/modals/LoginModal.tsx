@@ -52,6 +52,10 @@ function LoginModal() {
       }
     });
   };
+  const toggle = useCallback(() => {
+    LoginModal.onClose();
+    RegisterModal.onOpen();
+  }, [LoginModal, RegisterModal]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -92,6 +96,17 @@ function LoginModal() {
         icon={AiFillGithub}
         onClick={() => signIn("github")}
       />
+      <div className="text-nautral-500 text-center mt-4 font-light">
+        <div className="justify-center flex flex-row items-center gap-2">
+          <div>New to AirBnb?</div>
+          <div
+            className="text-neutral-800 cursor-pointer hover:underline"
+            onClick={toggle}
+          >
+            Create an account
+          </div>
+        </div>
+      </div>
     </div>
   );
   return (
