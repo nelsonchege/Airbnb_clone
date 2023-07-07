@@ -8,6 +8,7 @@ import { categories } from "@/app/data";
 import CategoryInput from "../inputs/CategoryInput";
 import { FieldValues, useForm } from "react-hook-form";
 import CountrySelect, { CountrySelectValue } from "../inputs/CountrySelect";
+import dynamic from "next/dynamic";
 
 enum STEPS {
   CATEGORY = 0,
@@ -44,7 +45,12 @@ export default function RentModal() {
   });
 
   const category = watch("category");
+  const location = watch("location");
 
+  const Map = useMemo(
+    () => dynamic(() => import("../Map"), { ssr: false }),
+    [location]
+  );
   const setCustomValue = (id: string, value: any) => {
     setValue(id, value, {
       shouldValidate: true,
@@ -99,17 +105,17 @@ export default function RentModal() {
 
   if (step == STEPS.LOCATION) {
     bodyCOntent = (
-      <div className="flwx flex-col gap-8">
+      <div className="flex flex-col gap-4">
         <Heading
           title="Where is your Place Located?"
           subtitle="Let guests find you"
           center={true}
         />
         <CountrySelect
-          onChange={function (value: CountrySelectValue): void {
-            throw new Error("Function not implemented.");
-          }}
+          value={location}
+          onChange={(value) => setCustomValue("location", value)}
         />
+        <Map center={location?.latlng} />
       </div>
     );
   }
