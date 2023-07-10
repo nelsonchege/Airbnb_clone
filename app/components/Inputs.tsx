@@ -49,6 +49,7 @@ const Inputs: React.FC<InputsProps> = ({
             ${errors[id] ? "focus:border-rose-500" : "focus:border-neutral-300"}
         `}
       />
+
       <label
         className={`
             absolute
