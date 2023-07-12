@@ -1,5 +1,4 @@
 import ClientOnly from "./clientOnly";
-import Modal from "./components/modals/Modal";
 import RegisterModal from "./components/modals/RegisterModal";
 import Navbar from "./components/navbar/Navbar";
 import "./globals.css";
@@ -35,7 +34,7 @@ export default function RootLayout({
             <LoginModal />
             <Navbar />
           </ClientOnly>
-          {children}
+          <div className="pb-20 pt-28">{children}</div>
         </NextAuthSessionProvider>
       </body>
     </html>
