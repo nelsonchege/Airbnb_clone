@@ -7,6 +7,7 @@ import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import { useSession, signOut } from "next-auth/react";
 import useRentModal from "@/app/hooks/useRentModal";
+import { useRouter } from "next/navigation";
 
 export default function UserMenu() {
   const { data: session } = useSession();
@@ -28,6 +29,7 @@ export default function UserMenu() {
     RentModal.onOpen();
   }, [session, LoginMadal, RentModal]);
 
+  const router = useRouter();
   return (
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
@@ -58,7 +60,10 @@ export default function UserMenu() {
                 </>
               ) : (
                 <>
-                  <MenuItems onClick={() => {}} label="My trips" />
+                  <MenuItems
+                    onClick={() => router.push("/trips")}
+                    label="My trips"
+                  />
                   <MenuItems onClick={() => {}} label="My Favorites" />
                   <MenuItems onClick={() => {}} label="My Reservations" />
                   <MenuItems onClick={() => {}} label="My Properties" />
