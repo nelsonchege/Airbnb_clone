@@ -2,11 +2,11 @@
 
 import { IconType } from "react-icons";
 
-interface CategoryViewProps {
+type CategoryViewProps = {
   icon: IconType;
   label: string;
   description: string;
-}
+};
 
 const CategoryView: React.FC<CategoryViewProps> = ({
   icon: Icon,
