@@ -4,6 +4,7 @@ import ClientOnly from "@/app/clientOnly";
 import EmptyState from "@/app/components/EmptyState";
 import React from "react";
 import ListingClient from "./ListingClient";
+import getReservations from "@/app/actions/getReservations";
 
 type LisingpageProps = {
   listingId: string;
@@ -11,6 +12,7 @@ type LisingpageProps = {
 
 const Lisingpage = async ({ params }: { params: LisingpageProps }) => {
   const listing = await getListingById(params);
+  const reservations = await getReservations(params);
   const currentUser = await getCurrentUser();
 
   if (!listing) {
@@ -22,7 +24,11 @@ const Lisingpage = async ({ params }: { params: LisingpageProps }) => {
   }
   return (
     <ClientOnly>
-      <ListingClient listing={listing} currentUser={currentUser} />
+      <ListingClient
+        listing={listing}
+        reservations={reservations}
+        currentUser={currentUser}
+      />
     </ClientOnly>
   );
 };
