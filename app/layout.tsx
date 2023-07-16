@@ -7,6 +7,7 @@ import { ToasterProvider } from "./providers/ToasterProvider";
 import NextAuthSessionProvider from "./providers/sessionProvider";
 import LoginModal from "./components/modals/LoginModal";
 import RentModal from "./components/modals/RentModal";
+import SearchModal from "./components/modals/SearchModal";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
         <NextAuthSessionProvider>
           <ClientOnly>
             <ToasterProvider />
+            <SearchModal />
             <RentModal />
             <RegisterModal />
             <LoginModal />
