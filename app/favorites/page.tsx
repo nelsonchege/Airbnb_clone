@@ -2,12 +2,11 @@ import React from "react";
 import getCurrentUser from "../actions/getCurrentUser";
 import ClientOnly from "../clientOnly";
 import EmptyState from "../components/EmptyState";
-import getReservations from "../actions/getReservations";
-import ReservationsClient from "./ReservationsClient";
+import getFavoriteListings from "../actions/getFavoriteListings";
+import FavoriteListingClient from "./FavoriteListingClient";
 
-const ResercationPage = async () => {
+const FavoritePage = async () => {
   const currentUser = await getCurrentUser();
-
   if (!currentUser) {
     return (
       <ClientOnly>
@@ -15,29 +14,26 @@ const ResercationPage = async () => {
       </ClientOnly>
     );
   }
+  const favoriteListings = await getFavoriteListings();
 
-  const reservations = await getReservations({
-    authorId: currentUser.id,
-  });
-
-  if (reservations.length === 0) {
+  if (favoriteListings.length === 0) {
     return (
       <ClientOnly>
         <EmptyState
-          title="No Reservations"
-          subTitle="Here are reservations for your listing"
+          title="No favorite Listings"
+          subTitle="Looks like you dont have any favorite Listings"
         />
       </ClientOnly>
     );
   }
   return (
     <ClientOnly>
-      <ReservationsClient
-        reservations={reservations}
+      <FavoriteListingClient
+        favoriteListings={favoriteListings}
         currentUser={currentUser}
       />
     </ClientOnly>
   );
 };
 
-export default ResercationPage;
+export default FavoritePage;

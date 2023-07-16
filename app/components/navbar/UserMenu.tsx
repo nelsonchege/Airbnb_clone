@@ -64,8 +64,14 @@ export default function UserMenu() {
                     onClick={() => router.push("/trips")}
                     label="My trips"
                   />
-                  <MenuItems onClick={() => {}} label="My Favorites" />
-                  <MenuItems onClick={() => {}} label="My Reservations" />
+                  <MenuItems
+                    onClick={() => router.push("/favorites")}
+                    label="My Favorites"
+                  />
+                  <MenuItems
+                    onClick={() => router.push("/reservations")}
+                    label="My Reservations"
+                  />
                   <MenuItems onClick={() => {}} label="My Properties" />
                   <MenuItems onClick={onRent} label="Airbnb my Home" />
                   <hr />
