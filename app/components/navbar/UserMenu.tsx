@@ -27,6 +27,7 @@ export default function UserMenu() {
       return LoginMadal.onOpen();
     }
     RentModal.onOpen();
+    setIsOpen(false);
   }, [session, LoginMadal, RentModal]);
 
   const router = useRouter();
@@ -61,19 +62,31 @@ export default function UserMenu() {
               ) : (
                 <>
                   <MenuItems
-                    onClick={() => router.push("/trips")}
+                    onClick={() => {
+                      router.push("/trips");
+                      setIsOpen(false);
+                    }}
                     label="My trips"
                   />
                   <MenuItems
-                    onClick={() => router.push("/favorites")}
+                    onClick={() => {
+                      router.push("/favorites");
+                      setIsOpen(false);
+                    }}
                     label="My Favorites"
                   />
                   <MenuItems
-                    onClick={() => router.push("/reservations")}
+                    onClick={() => {
+                      router.push("/reservations");
+                      setIsOpen(false);
+                    }}
                     label="My Reservations"
                   />
                   <MenuItems
-                    onClick={() => router.push("/properties")}
+                    onClick={() => {
+                      router.push("/properties");
+                      setIsOpen(false);
+                    }}
                     label="My Properties"
                   />
                   <MenuItems onClick={onRent} label="Airbnb my Home" />
