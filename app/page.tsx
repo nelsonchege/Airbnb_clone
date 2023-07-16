@@ -1,12 +1,15 @@
 import getCurrentUser from "./actions/getCurrentUser";
-import getListings from "./actions/getListings";
+import getListings, { IListingsParams } from "./actions/getListings";
 import ClientOnly from "./clientOnly";
 import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
 import ListingCard from "./listings/ListingCard";
 
-export default async function Home() {
-  const listing = await getListings();
+type HomaPageProps = {
+  searchParams: IListingsParams;
+};
+export default async function Home({ searchParams }: HomaPageProps) {
+  const listing = await getListings(searchParams);
   const currentUser = await getCurrentUser();
   if (listing.length == 0) {
     return (
