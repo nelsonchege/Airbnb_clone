@@ -7,17 +7,6 @@ const nextConfig = {
       "res.cloudinary.com",
     ],
   },
-  webpack: (config, { isServer }) => {
-    // Exclude HTML files from being processed by Webpack
-    if (!isServer) {
-      config.module.rules.push({
-        test: /\.html$/,
-        exclude: /node_modules/,
-        use: "raw-loader",
-      });
-    }
-    return config;
-  },
 };
 
 module.exports = nextConfig;
