@@ -15,15 +15,18 @@
     "@types/react": "18.2.9",
     "@types/react-dom": "18.2.4",
     "autoprefixer": "10.4.14",
+    "aws-sdk": "^2.1417.0",
     "axios": "^1.4.0",
     "bcrypt": "^5.1.0",
     "date-fns": "^2.30.0",
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.4",
     "leaflet": "^1.9.4",
+    "mock-aws-s3": "^4.0.2",
     "next": "13.4.4",
-    "next-auth": "^4.22.1",
+    "next-auth": "^4.22.3",
     "next-cloudinary": "^4.13.1",
+    "nock": "^13.3.2",
     "postcss": "8.4.24",
     "query-string": "^8.1.0",
     "react": "18.2.0",
@@ -44,6 +47,7 @@
     "@types/bcrypt": "^5.0.0",
     "@types/leaflet": "^1.9.3",
     "@types/react-date-range": "^1.4.4",
-    "prisma": "^4.16.0"
+    "prisma": "^4.16.0",
+    "raw-loader": "^4.0.2"
   }
 }
